@@ -35,7 +35,8 @@
                     ?>
             <!-- Results go here -->
             <div class="results">
-                 <?php echo $find_rs['Name']; ?>
+                <span class="sub_heading">
+                <?php echo $find_rs['Name']; ?></span>           
             </div> <!-- results -->
             
             <?php
