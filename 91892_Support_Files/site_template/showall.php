@@ -23,6 +23,8 @@
                 
             </div> <!-- end error -->
             
+            <br />
+            
             <?php
             }
             
@@ -33,8 +35,8 @@
                     ?>
             <!-- Results go here -->
             <div class="results">
-                 You have results!
-            </div>
+                 <?php echo $find_rs['Name']; ?>
+            </div> <!-- results -->
             
             <?php
                 } // end results 'do'
