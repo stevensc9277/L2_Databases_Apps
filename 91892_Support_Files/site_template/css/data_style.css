@@ -120,7 +120,7 @@ a.side {
     text-decoration: none;
 }
 a.side:link, a.side:visited {color: #636263;}
-a.side:hover {color:#8a1737; }
+a.side:hover {color:#5b7f31; }  /* light green */
 
 
 /**** Results ****/
