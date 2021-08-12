@@ -4,7 +4,7 @@
             
             
             <p>
-                Put link to original dataset here
+                This database includes some of the most popular apps available for mobile devices. The <a href="https://www.apple.com/app-store/">original dataset</a> can be found at the preceding link.
             </p>
             
 
