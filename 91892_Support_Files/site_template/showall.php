@@ -23,7 +23,7 @@
                 
             </div> <!-- end error -->
             
-            <br />
+            
             
             <?php
             }
@@ -39,6 +39,7 @@
                 <?php echo $find_rs['Name']; ?></span>           
             </div> <!-- results -->
             
+            <br />
             <?php
                 } // end results 'do'
                 
