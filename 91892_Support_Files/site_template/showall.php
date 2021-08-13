@@ -36,7 +36,9 @@
             <!-- Results go here -->
             <div class="results">
                 <span class="sub_heading">
-                <?php echo $find_rs['Name']; ?></span>           
+                <a href="<?php echo $find_rs['URL']; ?>"><?php echo $find_rs['Name']; ?>
+                    </a>
+                </span>           
             </div> <!-- results -->
             
             <br />
