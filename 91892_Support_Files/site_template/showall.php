@@ -77,9 +77,21 @@
                     <?php echo $find_rs['DevName'] ?>
                     
                 <br />
-                <b>Rating</b>:
-                    <?php echo $find_rs['User Rating']; ?> (based on <?php echo $find_rs['Rating Count'];?> votes)
-                
+                    
+                    <!-- Ratings area -->
+                <div class="flex-container">
+                    <!-- Partial Stars Original Source: https://codepen.io/Bluetidepro/pen/GkpEa -->
+                    <div class="star-ratings_sprite"> <!-- /star rating div -->
+                        
+                    <div class="actual-rating">
+                        (<?php echo $find_rs['User Rating'] ?> based on # ratings)
+                        
+                    </div> <!-- /text rating div -->
+                    
+                    </div>
+                      
+                    
+                </div><!-- /Ratings area -->    
                 <br />
                     
                 <!-- Price -->
@@ -106,6 +118,7 @@
                     
                     
                     ?>
+            <!-- / Price -->
                     </p>
                 <hr />
                 <?php echo $find_rs['Description']; ?>
