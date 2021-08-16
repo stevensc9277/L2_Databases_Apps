@@ -79,8 +79,34 @@
                 <br />
                 <b>Rating</b>:
                     <?php echo $find_rs['User Rating']; ?> (based on <?php echo $find_rs['Rating Count'];?> votes)
-                </p>
                 
+                <br />
+                    
+                <!-- Price -->
+                    
+                    <?php if($find_rs['Price'] == 0){
+                        ?>
+                    <p>
+                        Free!
+                        <?php if($find_rs['In App'] == 1){
+                            ?>
+                        (In App Purchase)
+                        <?php
+                        } // end in app if
+                        ?>
+                        
+                </p>
+                    <?php
+                    } // end price if
+                    else{
+                        ?>
+                    <b>Price:</b> $<?php echo $find_rs['Price'] ?>
+                <?php
+                    } //end price else
+                    
+                    
+                    ?>
+                    </p>
                 <hr />
                 <?php echo $find_rs['Description']; ?>
             </div> <!-- results -->
