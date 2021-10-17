@@ -191,12 +191,31 @@ a.side:hover {color:#5b7f31; }  /* light green */
     border-radius: 0 5px 5px 0;
 }
 
+.adv-cost {
+    width: 90%;
+    margin-bottom: 5px;
+}
+
 input[type="submit"]:hover {
     background-color: #000;
 }
 
 input.search[type=text], select {
     width: 205px;
+}
+
+/* ensures that text is next to checkbox in advanced search form */
+
+input[type="checkbox"]{
+    display: inline;
+    width: auto;
+}
+
+/* puts radio buttons next to each other in add entry form */
+input[type="radio"]{
+    height: auto;
+    width: auto;
+    display: inline;
 }
 
 input {
@@ -242,4 +261,46 @@ select {
     margin: auto;
     margin-right: 10px;
     margin-left: 10px;
+}
+
+/* Extra add entry styling */
+.add-entry {
+    max-width: 550px;
+    margin: auto;
+}
+
+.add-field {
+    width: 95%;
+    margin-bottom: 5px;
+}
+
+textarea,
+input[type=text] {
+    font-family: 'Lato', sans-serif;
+    font-size: 95%;
+    padding: 10px;
+}
+
+/* Form Error CSS */
+
+/* Field backgrounds */
+.form-ok {
+    background-color: #fff;
+}
+
+.form-error {
+    background-color: #ff9e9e;
+}
+
+/* error messages */
+.no-error {
+    display: none;
+}
+
+.error-text {
+    color: darkred;
+}
+
+.defaulted {
+    color: darkgreen;
 }
