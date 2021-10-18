@@ -89,10 +89,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     
     // check age is an integer, it is blank, set it to zero 
-    if (!ctype_digit($age) || $rating < 1){
-        $has_errors = "yes";
-        $count_error = "error-text";
-        $count_field = "form-error";
+    if ($age == "" || $age == "0"){
+        $age = 0;
+        $age_message = "The age has been set to 0 (ie: all ages)";
+        $age_error = "defaulted";
+    }
+    
+    else if(!is_numeric($age) || $age < 0){
+        $age = 0;
+        $age_message = "Age must be an integer that is 0 or more";
+        $age_errors = "yes";
+        $age_error = "error-text";
+        $age_field = "form-error";
     }
     
     // check rating is a decimal between 0 and 5
@@ -125,6 +133,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     // check description is not blank
     if ($description == "" || $description == "Please enter a description") {
+        $description = "";
         $has_errors = "yes";
         $description_error = "error-text";
         $description_field = "form-error";
@@ -255,20 +264,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input class="add-field <?php echo $dev_field; ?>" type="text" name="dev_name" value="<?php echo $dev_name; ?>" size="40" placeholder="Developer Name (required) ..."/>  
                 
             <!-- Age (set to 0 if left blank) -->
+            <div class = "<?php echo $age_error; ?>"><?php echo $age_message; ?></div>
             <input class="add-field" type="text" name="age" value="<?php echo $age; ?>"  placeholder="Age (0 for all)"/>    
                 
             <!-- Rating (Number between 0 - 5, 1dp) -->
             <div>
-                <input class="add-field" type="number" name="rating" value=" <?php echo $rating; ?>"  step="0.1" min=0 max=5 placeholder="Rating (0-5)"/>
+                <div class = "<?php echo $rating_error; ?>">Please enter a valid decimal or integer between 0 and 5</div>
+                <input class="add-field <?php echo $rating_field; ?>" type="number" name="rating" value=" <?php echo $rating; ?>"  step="0.1" min=0 max=5 placeholder="Rating (0-5)"/>
             </div>    
                 
             <!-- # of ratings (integer more than 0) -->
-            <input class="add-field" type="text" name="rate_count" value="<?php echo $rate_count; ?>" placeholder="# of Ratings"/>  
+            <div class="<?php echo $count_error; ?>">Please enter a valid number of ratings</div>
+            <input class="add-field <?php echo $count_field; ?>" type="text" name="rate_count" value="<?php echo $rate_count; ?>" placeholder="# of Ratings"/>  
                 
             <!-- Cost (Decimal 2dp, must be more than 0) -->
             <div>
                 <div class = "<?php echo $cost_error; ?>"><?php echo $cost_message; ?> </div>
-                <input class="add-field <?php echo $cost_field; ?>" type="number" name="cost" value=" <?php echo $cost; ?>"  step="0.1" min=0  placeholder="Cost (number only)"/>
+                <input class="add-field <?php echo $cost_field; ?>" type="number" name="cost" value="<?php echo $cost; ?>" step="0.01" min=0  placeholder="Cost (number only)"/>
             </div>   
             
             <!-- In App Purcahse radio buttons -->
