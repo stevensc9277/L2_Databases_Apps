@@ -17,7 +17,7 @@ $rating = "";
 $rate_count = "";
 $cost = "";
 $in_app = 1;
-$description = "Please enter a description";
+$description = "";
 
 $has_errors = "no";
 
@@ -314,7 +314,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="<?php echo $description_error; ?>">
                 Please enter a valid description 
             </div>
-            <textarea class="add-field <?php echo $description_field?>" name="description"  rows="6"><?php echo $description; ?></textarea>
+            <textarea class="add-field <?php echo $description_field?>" name="description" placeholder = "Please enter a description" rows="6"><?php echo $description; ?></textarea>
                 
             <!-- Submit button -->
             <p>
