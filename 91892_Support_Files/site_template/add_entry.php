@@ -66,14 +66,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     
      // Check URL is valid...
-    $url = filter_var($url, FILTER_SANITIZE_URL);
+     if($url == ""){
+         $has_errors = "yes";
+         $url_error = "error-text";
+         $url_field = "form-error";
+     }
+    // $url = filter_var($url, FILTER_SANITIZE_URL);
     
-    if (filter_var($url, FILTER_VALIDATE_URL) == false) {
-        $has_errors = "yes";
-        $url_error = "error-text";
-        $url_field = "form-error";
-    }
-    
+//    if (filter_var($url, FILTER_VALIDATE_URL) == false) {
+//        $has_errors = "yes";
+//        $url_error = "error-text";
+//        $url_field = "form-error";
+//   }
+//    
     // check genre is not blank
     if($genreID == ""){
         $has_errors = "yes";
@@ -164,7 +169,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $newdev_query=mysqli_query($dbconnect, $newdev_sql);
         $newdev_rs=mysqli_fetch_assoc($newdev_query);
             
-        $developer_ID = $newdev_rs['DeveloperID'];
+        $developer_ID = $newdev_rs['developerID'];
         
     } // end adding developer to developer table 
         
@@ -173,17 +178,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
    $addentry_query=mysqli_query($dbconnect, $addentry_sql);
         
     //Get ID for next page
-        $getid_sql = "SELECT * FROM `game_details` WHERE `Name` LIKE '$app_name' 
-        AND `Subtitle` LIKE '$subtitle' 
-        AND `URL` LIKE '$url' 
-        AND `GenreID` = $genreID
-        AND `DeveloperID` = $developerID
-        AND `Age` = $age 
-        AND `User Rating` = $rating
-        AND `Rating Count` = $rate_count
-        AND `Price` = $cost
-        AND `In App` = $in_app
-        ";
+    //    $getid_sql = "SELECT * FROM `game_details` WHERE `Name` LIKE '$app_name' 
+//        AND `Subtitle` LIKE '$subtitle' 
+//        AND `URL` LIKE '$url' 
+//        AND `GenreID` = $genreID
+//        AND `DeveloperID` = $developerID
+//        AND `Age` = $age 
+//        AND `User Rating` = $rating
+//        AND `Rating Count` = $rate_count
+//        AND `Price` = $cost
+//        AND `In App` = $in_app        ";
+        
+        // Shows most recent entry added
+        $getid_sql = "SELECT * FROM `game_details` ORDER BY `game_details`.`ID` DESC LIMIT 1";
         $getid_query= mysqli_query($dbconnect, $getid_sql);
         $getid_rs = mysqli_fetch_assoc($getid_query);
         
